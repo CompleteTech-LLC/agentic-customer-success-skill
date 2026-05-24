@@ -1,6 +1,14 @@
 # Agentic Customer Success Skill
 
+<p align="center">
+  <img src="assets/logo.png" alt="CompleteTech LLC logo" width="260">
+</p>
+
 A CompleteTech LLC Codex skill for creating customer success and account management artifacts for agentic development clients.
+
+## About
+
+Part of the CompleteTech LLC agentic services skill library. This skill keeps post-contact and post-sale client relationships organized through verified routing, follow-up, health, renewal, expansion, and advocacy artifacts.
 
 ## Workflow Diagram
 
@@ -53,3 +61,7 @@ Rendered artifacts are drafts. Replace placeholders with verified account, conta
 ## Brand Notes
 
 Use a practical, direct, professional tone. Customer success artifacts should help CompleteTech LLC keep client relationships organized: know the contacts, route messages correctly, track commitments, surface risks early, confirm success criteria, and ask for referrals or testimonials only with verified approval. Do not invent client facts, customer sentiment, approvals, renewal intent, testimonials, referrals, email addresses, or business outcomes.
+
+## License
+
+Code, templates, and documentation are licensed under the MIT License. CompleteTech LLC names, logos, seals, and brand assets are reserved and are not licensed for reuse except to identify this project. See `LICENSE` and `BRAND_ASSETS.md`.
