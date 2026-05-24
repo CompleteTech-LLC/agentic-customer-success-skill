@@ -74,6 +74,8 @@ Rendered artifacts are drafts. Replace placeholders with verified account, conta
 
 ![Customer success health snapshot preview](assets/examples/example.png)
 
+Preview converted from generated artifact: [example.md](assets/examples/example.md).
+
 **Account health snapshot: Post-launch support handoff**
 
 ```bash
@@ -83,7 +85,8 @@ python3 scripts/render_customer_success.py \
   --var workflow="support triage agent" \
   --var account_stage="post-launch support" \
   --var success_criteria="reviewer confidence, stable escalation routing, weekly queue visibility" \
-  --var next_action="schedule 30-day adoption review"
+  --var next_action="schedule 30-day adoption review" \
+  > assets/examples/example.md
 ```
 
 Example output focus:
