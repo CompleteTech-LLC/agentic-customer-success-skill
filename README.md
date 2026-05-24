@@ -70,6 +70,28 @@ python3 scripts/render_customer_success.py \
 
 Rendered artifacts are drafts. Replace placeholders with verified account, contact, communication, delivery, support, renewal, and approval facts before use.
 
+## Example
+
+![Customer success health snapshot preview](assets/examples/example.png)
+
+**Account health snapshot: Post-launch support handoff**
+
+```bash
+python3 scripts/render_customer_success.py \
+  --template client-health-scorecard \
+  --var client_name="Northstar Support" \
+  --var workflow="support triage agent" \
+  --var account_stage="post-launch support" \
+  --var success_criteria="reviewer confidence, stable escalation routing, weekly queue visibility" \
+  --var next_action="schedule 30-day adoption review"
+```
+
+Example output focus:
+
+- Health: stable, with one open adoption question.
+- Contacts: delivery owner, technical reviewer, billing contact, and executive sponsor marked as verified or `TBD`.
+- Next step: confirm adoption signals before asking for a testimonial or expansion conversation.
+
 ## Brand Notes
 
 Use a practical, direct, professional tone. Customer success artifacts should help CompleteTech LLC keep client relationships organized: know the contacts, route messages correctly, track commitments, surface risks early, confirm success criteria, and ask for referrals or testimonials only with verified approval. Do not invent client facts, customer sentiment, approvals, renewal intent, testimonials, referrals, email addresses, or business outcomes.
