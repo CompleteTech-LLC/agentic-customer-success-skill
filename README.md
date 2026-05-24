@@ -85,18 +85,18 @@ Full-document **branded PDF** rendered from the generated artifact: [example.pdf
 - Open commitments, follow-ups, and an expansion signal for a returns workflow.
 - Internal artifact only — not public proof.
 
-Generate the branded PDF (artifacts are delivered as PDFs, not raw Markdown):
+Generate it in one command (branded PDF + Markdown, like the contract skill):
 
 ```bash
 pip install -r requirements.txt
-# 1) Draft the artifact (optionally start from a catalog template)
-python3 scripts/render_customer_success.py --template client-health-scorecard > assets/examples/example.md
-# 2) Render the branded CompleteTech PDF (+ optional PNG preview)
-python3 scripts/render_pdf.py --markdown assets/examples/example.md \
+python3 scripts/render_customer_success.py --template client-health-scorecard \
   --out assets/examples/example.pdf --png assets/examples/example.png \
-  --logo assets/logo.png --title "Client Health Scorecard & QBR Summary" \
-  --doc-type "CUSTOMER SUCCESS — INTERNAL" --subtitle "Account: <b>Northwind Trading Co.</b>" --meta "DOCUMENT NO.=CS-2026-0051" --meta "DATE=2026-06-10" --meta "STAGE=Active delivery"
+  --markdown-out assets/examples/example.md \
+  --logo assets/logo.png --title "Client Health Scorecard & QBR Summary" --doc-type "CUSTOMER SUCCESS — INTERNAL" \
+  --subtitle "Account: <b>Northwind Trading Co.</b>" --meta "DOCUMENT NO.=CS-2026-0051" --meta "DATE=2026-06-10"
 ```
+
+The committed `example.{md,pdf,png}` use curated, realistic demonstration data for the Northwind Trading Co. support-triage pilot; pass `--var key=value` to fill template placeholders with your own facts.
 
 ## Brand Notes
 
