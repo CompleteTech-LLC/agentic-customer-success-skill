@@ -17,8 +17,8 @@ Part of the CompleteTech LLC agentic services skill library. This skill keeps po
 - Homepage: https://github.com/CompleteTech-LLC/agentic-customer-success-skill
 - README: https://github.com/CompleteTech-LLC/agentic-customer-success-skill#readme
 - Runtime binaries: `python3`
-- Python packages: none
-- Intended registry/discovery tags: `latest`, `complete-tech`, `codex-skill`, `agentic-development`, `agentic-workflows`, `customer-success`, `account-management`, `renewal`
+- Python packages: `reportlab>=4.0` (optional PNG preview: `pypdfium2`, `pillow`)
+- Intended registry/discovery tags: `latest`, `complete-tech`, `codex-skill`, `agentic-development`, `agentic-workflows`, `customer-success`, `account-management`, `renewal`, `pdf`, `pdf-generator`
 - License: repository code, templates, and documentation use MIT; ClawHub publishing is intentionally skipped for now.
 - Brand assets: CompleteTech LLC names, logos, seals, and brand assets are reserved; see `BRAND_ASSETS.md`.
 
@@ -57,6 +57,8 @@ flowchart LR
 - `references/customer-success-positioning.md` - CompleteTech LLC language, contact routing, and guardrails.
 - `references/template-index.json` - machine-readable artifact metadata.
 - `scripts/render_customer_success.py` - deterministic artifact listing and rendering helper.
+- `scripts/render_pdf.py` - branded CompleteTech PDF generator (Markdown -> PDF + optional PNG preview).
+- `requirements.txt` - Python dependencies for branded PDF rendering.
 
 ## Quick Start
 
@@ -72,28 +74,29 @@ Rendered artifacts are drafts. Replace placeholders with verified account, conta
 
 ## Example
 
-![Customer success health snapshot preview](assets/examples/example.png)
+![Client Health Scorecard & QBR Summary preview](assets/examples/example.png)
 
-Full-document preview converted from generated artifact: [example.md](assets/examples/example.md).
+Full-document **branded PDF** rendered from the generated artifact: [example.pdf](assets/examples/example.pdf). Markdown source: [example.md](assets/examples/example.md).
 
-**Account health snapshot: Post-launch support handoff**
+**Internal account artifact: Northwind Trading Co. health scorecard & QBR**
+
+- Health scorecard across engagement, product fit, adoption, commercial, and risk.
+- Verified contact routing (sponsor, legal, billing) with a security contact still TBD.
+- Open commitments, follow-ups, and an expansion signal for a returns workflow.
+- Internal artifact only — not public proof.
+
+Generate the branded PDF (artifacts are delivered as PDFs, not raw Markdown):
 
 ```bash
-python3 scripts/render_customer_success.py \
-  --template client-health-scorecard \
-  --var client_name="Northstar Support" \
-  --var workflow="support triage agent" \
-  --var account_stage="post-launch support" \
-  --var success_criteria="reviewer confidence, stable escalation routing, weekly queue visibility" \
-  --var next_action="schedule 30-day adoption review" \
-  > assets/examples/example.md
+pip install -r requirements.txt
+# 1) Draft the artifact (optionally start from a catalog template)
+python3 scripts/render_customer_success.py --template client-health-scorecard > assets/examples/example.md
+# 2) Render the branded CompleteTech PDF (+ optional PNG preview)
+python3 scripts/render_pdf.py --markdown assets/examples/example.md \
+  --out assets/examples/example.pdf --png assets/examples/example.png \
+  --logo assets/logo.png --title "Client Health Scorecard & QBR Summary" \
+  --doc-type "CUSTOMER SUCCESS — INTERNAL" --subtitle "Account: <b>Northwind Trading Co.</b>" --meta "DOCUMENT NO.=CS-2026-0051" --meta "DATE=2026-06-10" --meta "STAGE=Active delivery"
 ```
-
-Example output focus:
-
-- Health: stable, with one open adoption question.
-- Contacts: delivery owner, technical reviewer, billing contact, and executive sponsor marked as verified or `TBD`.
-- Next step: confirm adoption signals before asking for a testimonial or expansion conversation.
 
 ## Brand Notes
 
