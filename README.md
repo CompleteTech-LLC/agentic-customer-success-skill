@@ -74,7 +74,7 @@ Rendered artifacts are drafts. Replace placeholders with verified account, conta
 
 ![Customer success health snapshot preview](assets/examples/example.png)
 
-Preview converted from generated artifact: [example.md](assets/examples/example.md).
+Full-document preview converted from generated artifact: [example.md](assets/examples/example.md).
 
 **Account health snapshot: Post-launch support handoff**
 
