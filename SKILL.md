@@ -9,6 +9,10 @@ description: Create CompleteTech LLC customer success and account management art
 
 Create customer success and account management artifacts for CompleteTech LLC agentic development clients. Use this skill to keep communication organized, route messages to verified contacts, track health, prevent missed follow-ups, and identify retention or expansion opportunities.
 
+## System Boundary
+
+This skill owns post-contact and post-sale relationship state: contacts, routing, follow-ups, health, renewal, expansion, advocacy planning, and at-risk recovery. Use `agentic-delivery-skill` for implementation execution records, `agentic-email-skill` for polished outbound copy, `agentic-invoice-skill` for billing documents, and `agentic-case-study-skill` for public or reusable proof after client approval.
+
 ## Core Workflow
 
 1. Identify the customer situation: onboarding, contact routing, meeting follow-up, missed response, concern, support escalation, post-launch check-in, renewal, expansion, referral/testimonial, stakeholder change, executive update, at-risk account, or offboarding.
