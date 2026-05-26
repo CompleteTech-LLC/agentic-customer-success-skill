@@ -1,0 +1,14 @@
+flowchart LR
+  A[Verified account facts] --> B[Contact routing]
+  B --> C[Follow-ups and commitments]
+  C --> D{Account signal}
+  D -->|Healthy| E[Renewal or expansion plan]
+  D -->|Risk| F[Recovery or escalation plan]
+  E --> G[Advocacy timing]
+  F --> C
+  classDef source fill:#eef6ff,stroke:#3778c2,color:#102a43;
+  classDef gate fill:#fff7e6,stroke:#c97a12,color:#3d2600;
+  classDef output fill:#eefaf0,stroke:#2f8f46,color:#12351d;
+  class A,B,C source;
+  class D gate;
+  class E,F,G output;
