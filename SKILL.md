@@ -2,7 +2,7 @@
 name: agentic-customer-success-skill
 description: >-
   Create CompleteTech LLC customer success and account management artifacts for agentic development clients, including account profiles, contact maps, approved email/contact routing, meeting notes, follow-up trackers, health scorecards, relationship risk logs, renewal readiness, expansion briefs, QBRs, support escalations, satisfaction surveys, testimonial/referral plans, executive check-ins, at-risk recovery, offboarding, stakeholder changes, communication cadence, success criteria reviews, and post-launch adoption check-ins. Use after first contact, during delivery, after launch, and through renewal or expansion when Codex needs to manage customer relationships without inventing facts.
-version: 1.0.0
+version: 1.0.1
 metadata:
   openclaw:
     skillKey: agentic-customer-success-skill
