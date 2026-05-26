@@ -13,13 +13,13 @@ Part of the CompleteTech LLC agentic services skill library. This skill keeps po
 ## OpenClaw / ClawHub Metadata
 
 - Skill key: `agentic-customer-success-skill`
-- Version-ready metadata: `1.0.0`
+- Version-ready metadata: `1.0.2`
 - Homepage: https://github.com/CompleteTech-LLC/agentic-customer-success-skill
 - README: https://github.com/CompleteTech-LLC/agentic-customer-success-skill#readme
 - Runtime binaries: `python3`
-- Python packages: `reportlab>=4.0` (optional PNG preview: `pypdfium2`, `pillow`)
+- Python packages: `reportlab==4.5.1`, `pyyaml==6.0.3` (optional PNG preview: `pypdfium2==5.8.0`, `pillow==12.2.0`)
 - Intended registry/discovery tags: `latest`, `complete-tech`, `codex-skill`, `agentic-development`, `agentic-workflows`, `customer-success`, `account-management`, `renewal`, `pdf`, `pdf-generator`
-- License: repository code, templates, and documentation use MIT; ClawHub publishing is intentionally skipped for now.
+- License: repository code, templates, and documentation use MIT; published by CompleteTech on ClawHub.
 - Brand assets: CompleteTech LLC names, logos, seals, and brand assets are reserved; see `BRAND_ASSETS.md`.
 
 ## Workflow Diagram
@@ -105,33 +105,14 @@ The committed `example.{md,pdf,png}` use curated, realistic demonstration data f
 
 Use a practical, direct, professional tone. Customer success artifacts should help CompleteTech LLC keep client relationships organized: know the contacts, route messages correctly, track commitments, surface risks early, confirm success criteria, and ask for referrals or testimonials only with verified approval. Do not invent client facts, customer sentiment, approvals, renewal intent, testimonials, referrals, email addresses, or business outcomes.
 
+## Runtime Permissions
+
+This skill needs local filesystem access only for the documented renderer workflow. It reads bundled templates, references, examples, `assets/logo.png`, and user-provided Markdown or variables, then writes only to the selected `--out`, `--png`, `--markdown-out`, or default `output/` artifact paths. It runs local Python renderer entry points and does not require network access, credential access, persistence, privilege escalation, or destructive file operations.
+
+## Network Boundary
+
+This skill is local-only. It does not include outbound network helpers, callbacks, or any helper that posts customer-success run metadata to an external service.
+
 ## License
 
 Code, templates, and documentation are licensed under the MIT License. CompleteTech LLC names, logos, seals, and brand assets are reserved and are not licensed for reuse except to identify this project. See `LICENSE` and `BRAND_ASSETS.md`.
-
-## Certificate Receipts
-
-This skill can run normally without a classroom key. For certificate credit, run the skill workflow first, then request a one-time receipt from `cert.complete.tech`:
-
-```bash
-python scripts/request_receipt.py \
-  --class-id "cls_agentic_customer_success_skill" \
-  --session-id "ses_YYYYMMDD_agentic_customer_success_skill" \
-  --completion-key "$CT_CERT_COMPLETION_KEY"
-```
-
-The helper sends `class_id`, `session_id`, `completion_key`, `skill_id`, `skill_version`, a generated `run_id`, optional artifact hash, and metadata to `https://cert.complete.tech/api/skill-runs`. It prints the receipt code and writes a receipt JSON file. Students use the receipt code at `https://cert.complete.tech/claim`. Do not commit real completion keys.
-
-If the skill produced a file, include it so the receipt records an artifact hash:
-
-```bash
-python scripts/request_receipt.py --artifact output/example.pdf
-```
-
-### Receipt Tests
-
-```bash
-python tests/test_receipt_cli.py
-```
-
-The test uses a local fake receipt API and does not require live keys or the live `cert.complete.tech` endpoint.

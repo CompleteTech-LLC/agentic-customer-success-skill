@@ -2,7 +2,7 @@
 name: agentic-customer-success-skill
 description: >-
   Create CompleteTech LLC customer success and account management artifacts for agentic development clients, including account profiles, contact maps, approved email/contact routing, meeting notes, follow-up trackers, health scorecards, relationship risk logs, renewal readiness, expansion briefs, QBRs, support escalations, satisfaction surveys, testimonial/referral plans, executive check-ins, at-risk recovery, offboarding, stakeholder changes, communication cadence, success criteria reviews, and post-launch adoption check-ins. Use after first contact, during delivery, after launch, and through renewal or expansion when Codex needs to manage customer relationships without inventing facts.
-version: 1.0.1
+version: 1.0.2
 metadata:
   openclaw:
     skillKey: agentic-customer-success-skill
@@ -12,9 +12,13 @@ metadata:
         - python3
     install:
       - kind: uv
-        package: reportlab>=4.0
+        package: reportlab==4.5.1
       - kind: uv
-        package: pyyaml>=6.0
+        package: pypdfium2==5.8.0
+      - kind: uv
+        package: pillow==12.2.0
+      - kind: uv
+        package: pyyaml==6.0.3
 ---
 
 # Agentic Customer Success Skill
@@ -78,6 +82,15 @@ When several artifacts fit, choose the one closest to the customer event. Use su
 - `references/template-index.json`: machine-readable artifact metadata used by the renderer.
 - `scripts/render_customer_success.py`: list customer success artifacts or render a draft with placeholders.
 
+## Runtime Permissions
+
+This skill needs local filesystem access only for its documented renderer workflow:
+
+- Reads bundled templates, references, examples, `assets/logo.png`, and user-provided Markdown or variable inputs.
+- Writes only to the user-selected `--out`, `--png`, `--markdown-out`, or default `output/` artifact paths.
+- Runs local Python entry points `scripts/render_customer_success.py` and `scripts/render_pdf.py`.
+- Does not require network access, credential access, persistence, privilege escalation, or destructive file operations.
+
 ## Renderer
 
 ```bash
@@ -105,10 +118,6 @@ python3 scripts/render_customer_success.py --template client-health-scorecard \
 - Already drafted the Markdown yourself? Render it directly: `python3 scripts/render_pdf.py --markdown artifact.md --out artifact.pdf --logo assets/logo.png --title "..."`.
 - The PDF supports a Markdown subset: `#`/`##`/`###` headings, paragraphs, `-` bullets, tables, `>` callouts, `**bold**`, and `[PAGE_BREAK]`. PDF requires `reportlab`; the optional `--png` preview requires `pypdfium2` and `pillow`. See `assets/examples/` for a rendered example.
 
-## Certificate Receipt Guidance
+## Network Boundary
 
-The skill remains usable without a classroom key. When certificate credit is needed, use `scripts/request_receipt.py` after the skill run. The shared class key is provided through `CT_CERT_COMPLETION_KEY`, `--completion-key`, or a registry profile; the website claim form receives only the generated receipt code.
-
-Receipt requests include this skill ID: `agentic-customer-success-skill`. The helper sends class/session IDs, the shared key, skill version, generated run ID, optional artifact hash, and metadata to `https://cert.complete.tech/api/skill-runs`. The student claims the certificate at `https://cert.complete.tech/claim` with the returned receipt.
-
-Do not print, store, or commit real classroom completion keys.
+This skill is local-only. It does not include outbound network helpers, callbacks, or any helper that posts customer-success run metadata to an external service.
